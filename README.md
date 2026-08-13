@@ -1,80 +1,72 @@
 # Multilingual Cyberbullying Detection Through Integrated Sentiment and Emotion Analysis
 
+A research project for detecting cyberbullying in multilingual social-media text, with a focus on English, Hindi, and Hinglish code-mixed text.
+
 ## Project Overview
 
-This project focuses on detecting cyberbullying in multilingual social-media text, particularly English, Hindi, and Hinglish code-mixed text.
+The system uses a multitask deep-learning architecture that combines:
 
-The proposed system integrates multilingual language understanding with emotion, sentiment, and sarcasm analysis to improve cyberbullying detection.
+- **XLM-RoBERTa** as the multilingual language-model backbone
+- **LoRA** for parameter-efficient fine-tuning
+- **Bidirectional GRU (Bi-GRU)** for sequence modeling
+- **Emotion-Aware Attention (EAA)** to emphasize emotionally relevant context
+- Four task-specific heads for:
+  - Cyberbullying detection
+  - Emotion classification
+  - Sentiment analysis
+  - Sarcasm detection
 
-## Objective
+The multitask objective jointly learns the four related tasks.
 
-The objective of the project is to develop a multitask deep-learning model capable of analyzing multilingual and code-mixed social-media text while considering emotional and contextual information.
+## Project Structure
 
-## Model Architecture
-
-The proposed architecture combines:
-
-- XLM-RoBERTa as the multilingual language-model backbone
-- LoRA for parameter-efficient fine-tuning
-- Bidirectional GRU (Bi-GRU) for sequence modelling
-- Emotion-Aware Attention (EAA) to emphasize emotionally relevant information
-- Four task-specific classification heads
-
-The four tasks are:
-
-1. Cyberbullying detection
-2. Emotion classification
-3. Sentiment analysis
-4. Sarcasm detection
-
-### Architecture Flow
-
-Input Text
-↓
-XLM-RoBERTa
-↓
-LoRA Fine-Tuning
-↓
-Bidirectional GRU
-↓
-Emotion-Aware Attention
-↓
-Multitask Classification Heads
-├── Cyberbullying
-├── Emotion
-├── Sentiment
-└── Sarcasm
+```text
+cyberbullying-detection/
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── notebooks/
+│   └── Cyberbully_FRP_GitHub.ipynb
+├── data/
+│   └── README.md
+├── results/
+│   └── results_summary.md
+└── docs/
+```
 
 ## Dataset
 
-The project uses multilingual English, Hindi, and Hinglish text datasets.
+The project uses two datasets covering multilingual English, Hindi, and Hinglish text. The raw CSV files are not included in this public repository because redistribution rights have not been established.
 
-The raw datasets are not included in this public repository because their redistribution permissions have not been established.
+See [`data/README.md`](data/README.md) for details.
 
-See [`data/README.md`](data/README.md) for information about the datasets used in the project.
+## Model Architecture
 
-## Technologies Used
-
-- Python
-- PyTorch
-- Hugging Face Transformers
-- XLM-RoBERTa
-- PEFT / LoRA
-- Scikit-learn
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- NLTK
-- Google Colab
+```text
+Input Text
+    ↓
+XLM-RoBERTa
+    ↓
+LoRA Fine-Tuning
+    ↓
+Bidirectional GRU
+    ↓
+Emotion-Aware Attention
+    ↓
+Shared Representation
+    ├── Cyberbullying Head
+    ├── Emotion Head
+    ├── Sentiment Head
+    └── Sarcasm Head
+```
 
 ## Training
 
-The model was trained using a GPU-enabled environment. The notebook contains the preprocessing, model architecture, training, evaluation, and inference pipeline.
+The reported project experiments used a consumer-level GPU/Google Colab environment. The notebook contains the preprocessing, model construction, training, evaluation, and inference pipeline.
 
 ## Reported Results
 
-The project was trained on 59,537 samples covering English, Hindi, and Hinglish text.
+The project report reports training on **59,537 text samples** across English, Hindi, and Hinglish.
 
 | Metric | Reported Result |
 |---|---:|
@@ -84,15 +76,24 @@ The project was trained on 59,537 samples covering English, Hindi, and Hinglish 
 | Sarcasm Detection Accuracy | 95.89% |
 | Cyberbullying Detection Performance | 69.83% |
 
-## Repository Contents
+See [`results/results_summary.md`](results/results_summary.md).
 
-```text
-cyberbullying-detection/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── Cyberbully_FRP_GitHub.ipynb
-├── data/
-│   └── README.md
-└── results/
-    └── results_summary.md
+## How to Run
+
+1. Install Python and the packages in `requirements.txt`.
+2. Obtain the datasets through their original sources and confirm that their licenses permit use.
+3. Place the datasets in the `data/` directory using the filenames expected by the notebook.
+4. Open `notebooks/Cyberbully_FRP_GitHub.ipynb`.
+5. Run the notebook on a suitable GPU-enabled environment such as Google Colab.
+
+The XLM-RoBERTa base model is downloaded through the Hugging Face Transformers library when the notebook runs.
+
+## Author
+
+**Prakriti Krishna**
+
+Role in the academic project included model architecture design, training strategy and evaluation planning, data preprocessing, PPT preparation, and manuscript writing.
+
+## Note
+
+This repository is a public project artifact prepared from an academic research project. The public repository does not include private documents, consent forms, similarity/AI reports, raw datasets, or trained model checkpoints.
