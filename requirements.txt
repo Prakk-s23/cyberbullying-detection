@@ -1,0 +1,13 @@
+transformers==4.41.2
+peft==0.10.0
+accelerate==0.29.3
+sentencepiece
+scikit-learn
+matplotlib
+seaborn
+emoji
+nltk
+tqdm
+torch
+pandas
+numpy

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+*.key
+
+# Local/model outputs
+outputs/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Raw/private datasets
+data/*.csv
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
